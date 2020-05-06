@@ -24,7 +24,12 @@ class GameHeader extends React.Component {
         var picMap ={win, lose, width, height, mines }
 
         if (this.props.status === "pre") {
-            return this.StartNewGame();
+            return (<div>
+                <h1>
+                    Mine Sweeper <img src={mines} className={"Head-pic"}/>
+                </h1>                
+                {this.StartNewGame()}
+            </div>);            
         }
 
         if (this.props.status === "win" || this.props.status === "lose") {

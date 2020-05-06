@@ -285,7 +285,7 @@ class MineBox extends React.Component {
     handleClick (e) {
         const isShift = e.shiftKey;        
 
-        const boxData = {id: this.props.id}
+        const boxData = {id: this.props.id, isMine:this.props.isMine}
 
         this.props.click(isShift, boxData);
     }
