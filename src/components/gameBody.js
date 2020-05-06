@@ -1,20 +1,9 @@
 import React from 'react';
-import base from '../images/base.png';
-import flag from '../images/flag.png';
-import pic0 from '../images/0.png';
-import pic1 from '../images/1.png';
-import pic2 from '../images/2.png';
-import pic3 from '../images/3.png';
-import pic4 from '../images/4.png';
-import pic5 from '../images/5.png';
-import pic6 from '../images/6.png';
-import pic7 from '../images/7.png';
-import pic8 from '../images/8.png';
-import mine from '../images/mine.png';
 import genie from '../images/genie.png';
 import '../App.css';
 import { Col, Row, Grid } from 'react-flexbox-grid'
-import GameHeder from './gameHeader.js'
+import GameHeder from './gameHeader.js';
+import MineBox from './mineBox.js';
 
 class GameBody extends React.Component {
 
@@ -37,7 +26,8 @@ class GameBody extends React.Component {
         this.applyAround = this.applyAround.bind(this);
         this.increaseValue = this.increaseValue.bind(this);
         this.onClick = this.onClick.bind(this);
-        this.fixFlags = this.fixFlags.bind(this);
+        this.setFlag = this.setFlag.bind(this);
+        this.outOfFlags = this.outOfFlags.bind(this)
         this.formatBoxesTable = this.formatBoxesTable.bind(this);
         this.reveal = this.reveal.bind(this);
         this.revealAll = this.revealAll.bind(this);
@@ -154,7 +144,7 @@ class GameBody extends React.Component {
     onClick (shift, box) {
         let id = this.convertId(box.id)
         if (shift) {
-            this.fixFlags(id)
+            this.setFlag(id)
         }
         else {
             if (box.isMine)
@@ -166,15 +156,13 @@ class GameBody extends React.Component {
         }
     }
 
-    fixFlags(id){
+    setFlag(id){
         
         let {x,y} = id;
         let currBox = this.state.dataTable[x][y];
 
-        if (this.state.flags.bad + this.state.flags.good == this.state.mines && !currBox.flagged) {
-            let alert = <h4>Your out of Flags!</h4>;
-            this.setState({alert});
-            return;
+        if (this.state.flags.bad + this.state.flags.good == this.state.mines && !currBox.flagged) {  
+            return this.outOfFlags()
         }
 
         var goodOrBad = currBox.isMine ? "good" : "bad";
@@ -193,6 +181,11 @@ class GameBody extends React.Component {
             }
         });
         
+    }
+
+    outOfFlags() {
+        let alert = <h4>You're out of Flags!</h4>;
+        this.setState({alert});
     }
 
     reveal(id){
@@ -263,40 +256,5 @@ class GameBody extends React.Component {
     };
 }
 
-class MineBox extends React.Component {
 
-    constructor(props) {
-        super(props);
-        
-        this.handleClick = this.handleClick.bind(this);
-        this.picMap = {
-            0: pic0,
-            1: pic1,
-            2: pic2,
-            3: pic3,
-            4: pic4,
-            5: pic5,
-            6: pic6,
-            7: pic7,
-            8: pic8
-        };
-    }
-
-    handleClick (e) {
-        const isShift = e.shiftKey;        
-
-        const boxData = {id: this.props.id}
-
-        this.props.click(isShift, boxData);
-    }
-
-    render() {
-      return (        
-          <img  src={(this.props.showAll || this.props.revealed)? (this.props.isMine? mine : this.picMap[this.props.value]) : (this.props.flagged? flag: base)} 
-                className={"Box-logo "} 
-                alt={this.props.value} 
-                onClick={this.handleClick}/>        
-      );
-    }
-}
 export default GameBody;

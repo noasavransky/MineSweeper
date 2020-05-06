@@ -39,6 +39,14 @@
   padding-left:20px;
 }
 
+.Head-title {
+  font-size: large;
+}
+
+.Head-pic {
+  height: 55px;
+}
+
 .Header-pic {
   height: 35px;
   padding: 0 20px;

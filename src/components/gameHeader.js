@@ -14,29 +14,56 @@ class GameHeader extends React.Component {
     constructor(props) {
         super(props);
         this.state = {width: 10, height: 10, mines: 10}
-        this.GameStatus = this.GameStatus.bind(this);
+        this.gameStatus = this.gameStatus.bind(this);
+        this.newGameHeader = this.newGameHeader.bind(this);
+        this.gameResultHeader = this.gameResultHeader.bind(this);
+        this.ongoingGameHeader = this.ongoingGameHeader.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleStart = this.handleStart.bind(this);
     }
 
-    GameStatus () {
+    gameStatus () {
         let elem;
-        var picMap ={win, lose, width, height, mines }
-
+        
         if (this.props.status === "pre") {
-            return this.StartNewGame();
+            return this.newGameHeader();          
         }
 
         if (this.props.status === "win" || this.props.status === "lose") {
-            elem = <div>
+            elem = this.gameResultHeader();
+        }
+        else {            
+            elem = this.ongoingGameHeader();
+        }
+        return elem;
+    }
+
+    newGameHeader() {
+        return (
+            <div>
+                <h1>
+                    Mine Sweeper <img src={mines} className={"Head-pic"}/>
+                </h1>                
+                {this.startNewGame()}
+            </div>  
+        );
+    }
+
+    gameResultHeader() {
+        const picMap ={win, lose}
+        return (
+            <div>
                 <h2>You {this.props.status.toUpperCase()}! 
                 <img src={picMap[this.props.status]} className={"Win-pic"} alt={this.props.status}/></h2>
-                {this.StartNewGame()}
-            </div>;
-        }
-        else {
-            let flagsCount = this.props.mines - (this.props.flags.good + this.props.flags.bad);
-            elem = <div>
+                {this.startNewGame()}
+            </div>);
+    }
+
+    ongoingGameHeader() {
+        const picMap ={width, height, mines}
+        let flagsCount = this.props.mines - (this.props.flags.good + this.props.flags.bad);
+        return (
+            <div>
                 <h1>
                     {["Height", "Width", "Mines"].map(curr => {return <span className="Header-title">
                         <img src={picMap[curr.toLowerCase()]} className={"Header-pic"} alt={curr}/> {curr} {this.props[curr.toLowerCase()]}
@@ -46,38 +73,25 @@ class GameHeader extends React.Component {
                         <img src={flags} className={"Header-pic"} alt="flags"/> Remaining Flags {flagsCount}
                     </span>
                 </h1>
-                </div>;
-        }
-        return elem;
+            </div>
+        );
     }
 
-    StartNewGame () {
+    startNewGame () {
+        let fields = [
+            {title:"Board Width:", name:"width"}, 
+            {title:"Board Height:", name:"height"},
+            {title:"Mines:", name:"mines"}]
         return (<div>
             <h3>Do you want to start a new game?</h3>
-            <span className="Header-title">Board Width: <input  type="number" 
-                                                                value={this.state.width}
-                                                                name="width"
-                                                                min="0"
-                                                                max="300"
+            {fields.map((curr)=> (
+                <span className="Header-title">{curr.title} <input  type="number" 
+                                                                value={this.state[curr.name]}
+                                                                name={curr.name}
                                                                 onChange={this.handleChange}
                                                                 className="Game-input"></input> 
-            </span>
-            <span className="Header-title">Board Height: <input type="number" 
-                                                                value={this.state.height}
-                                                                name="height" 
-                                                                min="0"
-                                                                max="300"
-                                                                onChange={this.handleChange}
-                                                                className="Game-input"></input> 
-            </span>
-            <span className="Header-title">Mines: <input    type="number" 
-                                                            value={this.state.mines}
-                                                            name="mines"
-                                                            min="0"
-                                                            max={this.state.width * this.state.height}
-                                                            onChange={this.handleChange}
-                                                            className="Game-input"></input> 
-            </span>
+                 </span>
+            ))}
             <div onClick={this.handleStart}>
                 <h2>
                     Start Game <img src={go} className={"Start-pic"} alt="start game!"/>
@@ -114,7 +128,7 @@ class GameHeader extends React.Component {
     }
 
     render() {
-      return this.GameStatus();
+      return this.gameStatus();
     }
   }
 
