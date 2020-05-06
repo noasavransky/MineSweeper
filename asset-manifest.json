@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/MineSweeper/static/css/main.1dc69e7a.chunk.css",
-    "main.js": "/MineSweeper/static/js/main.faca7ab1.chunk.js",
-    "main.js.map": "/MineSweeper/static/js/main.faca7ab1.chunk.js.map",
+    "main.css": "/MineSweeper/static/css/main.7f6c1d9a.chunk.css",
+    "main.js": "/MineSweeper/static/js/main.e1d7bb84.chunk.js",
+    "main.js.map": "/MineSweeper/static/js/main.e1d7bb84.chunk.js.map",
     "runtime-main.js": "/MineSweeper/static/js/runtime-main.756b08d4.js",
     "runtime-main.js.map": "/MineSweeper/static/js/runtime-main.756b08d4.js.map",
     "static/css/2.22d6b5ec.chunk.css": "/MineSweeper/static/css/2.22d6b5ec.chunk.css",
-    "static/js/2.eb3efaaa.chunk.js": "/MineSweeper/static/js/2.eb3efaaa.chunk.js",
-    "static/js/2.eb3efaaa.chunk.js.map": "/MineSweeper/static/js/2.eb3efaaa.chunk.js.map",
+    "static/js/2.877366ac.chunk.js": "/MineSweeper/static/js/2.877366ac.chunk.js",
+    "static/js/2.877366ac.chunk.js.map": "/MineSweeper/static/js/2.877366ac.chunk.js.map",
     "index.html": "/MineSweeper/index.html",
-    "precache-manifest.32586e2729982331458476840c63e96a.js": "/MineSweeper/precache-manifest.32586e2729982331458476840c63e96a.js",
+    "precache-manifest.958c2fd938a11e896c709159861a6af4.js": "/MineSweeper/precache-manifest.958c2fd938a11e896c709159861a6af4.js",
     "service-worker.js": "/MineSweeper/service-worker.js",
     "static/css/2.22d6b5ec.chunk.css.map": "/MineSweeper/static/css/2.22d6b5ec.chunk.css.map",
-    "static/css/main.1dc69e7a.chunk.css.map": "/MineSweeper/static/css/main.1dc69e7a.chunk.css.map",
-    "static/js/2.eb3efaaa.chunk.js.LICENSE.txt": "/MineSweeper/static/js/2.eb3efaaa.chunk.js.LICENSE.txt",
+    "static/css/main.7f6c1d9a.chunk.css.map": "/MineSweeper/static/css/main.7f6c1d9a.chunk.css.map",
+    "static/js/2.877366ac.chunk.js.LICENSE.txt": "/MineSweeper/static/js/2.877366ac.chunk.js.LICENSE.txt",
     "static/media/genie.png": "/MineSweeper/static/media/genie.7f3f75b9.png",
     "static/media/go.png": "/MineSweeper/static/media/go.32e9f059.png",
     "static/media/win.png": "/MineSweeper/static/media/win.68bb66a7.png"
@@ -21,8 +21,8 @@
   "entrypoints": [
     "static/js/runtime-main.756b08d4.js",
     "static/css/2.22d6b5ec.chunk.css",
-    "static/js/2.eb3efaaa.chunk.js",
-    "static/css/main.1dc69e7a.chunk.css",
-    "static/js/main.faca7ab1.chunk.js"
+    "static/js/2.877366ac.chunk.js",
+    "static/css/main.7f6c1d9a.chunk.css",
+    "static/js/main.e1d7bb84.chunk.js"
   ]
 }
